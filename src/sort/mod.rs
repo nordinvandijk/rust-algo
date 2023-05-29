@@ -13,3 +13,17 @@ pub fn insertion(vec: &mut Vec<u64>) {
     }
     println!("Out: {:?}", vec);
 }
+
+pub fn selection(vec: &mut Vec<u64>) {
+    println!("In: {:?}", vec);
+    for i in 0..vec.len() {
+        let mut minIndex = i;
+        for j in i..vec.len() {
+            if vec[j] < vec[minIndex] {
+                minIndex = j;
+            }
+        }
+        vec.swap(i, minIndex)
+    }
+    println!("Out: {:?}", vec);
+}
