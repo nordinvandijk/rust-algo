@@ -1,16 +1,20 @@
 mod sort;
-
 use sort::{insertion, selection};
 
-use std::env;
+use clap::{Parser};
 
-
+#[derive(Debug, Parser)]
+// #[clap(author, version, about)]
+pub struct CliArgs {
+    /// Name of algorithm
+    name: String,
+}
 
 fn main() {
-    let script = &*env::args().nth(1).expect("went wrong");
-    let mut input: Vec<u64> = vec![3,7,8,1,6,6];
+    let args = CliArgs::parse();
+    let mut input = vec![4,6,1,7,3,4,2];
 
-    match script {
+    match args.name.as_str() {
         "insertion_sort" => {
             insertion(&mut input);
         },
